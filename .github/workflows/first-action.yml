@@ -9,4 +9,6 @@ jobs:
       - name: print greeting
         run: echo "greeting"
       - name: print good bye
-        run: echo "Byee"
+        run: |
+          echo "Byee"
+          echo "Multi Line Shell Commands"
