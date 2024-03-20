@@ -18,7 +18,7 @@ jobs:
       - name: JobOutput
         run: |
           aa=$(ls | tail -1)
-          echo "aa='${aa}'" >> $GITHUB_OUTPUT
+          echo "aa=${aa}" >> $GITHUB_OUTPUT
   use-artifacts:
     needs: create-artifacts
     runs-on: ubuntu-latest
