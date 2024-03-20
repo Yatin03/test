@@ -12,7 +12,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: files
-          path: aa_**.txt
+          path: '**/aa_**.txt'
   use-artifacts:
     needs: create-artifacts
     runs-on: ubuntu-latest
