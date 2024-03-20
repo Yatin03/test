@@ -4,18 +4,19 @@ jobs:
   create_artifacts:
     runs-on: ubuntu-latest
     outputs:
-      first_var: ${{ steps.JobOutput.outputs.aa }}
+      first_var: ${{ steps.jobout.outputs.aa }}
     steps:
       - name: test
         run: |
           echo "test1" > aa_1.txt
           echo "test2" > aa_2.txt
       - name: store-artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: files
-          path: '**/aa_**.txt'
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: files
+#          path: '**/aa_**.txt'
       - name: JobOutput
+        id: jobout
         run: |
           aa=$(ls | tail -1)
           echo "aa=${aa}" >> "$GITHUB_OUTPUT"
@@ -25,9 +26,9 @@ jobs:
     steps:
       - name: test
         run: echo "test"
-      - name: download artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: files
+#      - name: download artifacts
+#        uses: actions/download-artifact@v4
+#        with:
+#          name: files
       - name: list file names
         run: echo ${{ needs.create_artifacts.outputs.first_var }}
