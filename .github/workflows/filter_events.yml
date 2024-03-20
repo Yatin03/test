@@ -1,0 +1,24 @@
+name: Filter Events
+on: [ push ]
+jobs:
+  create-artifacts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        run: echo "test" > aa_{1..4}.txt
+      - name: store-artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: files
+          path: **/aa_**.txt
+  use-artifacts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        run: echo "test"
+      - name: download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: files
+      - name: list file names
+        run: ls -R
