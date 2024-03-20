@@ -1,7 +1,7 @@
 name: Filter Events
 on: [ push ]
 jobs:
-  create-artifacts:
+  create_artifacts:
     runs-on: ubuntu-latest
     outputs:
       first_var: ${{ steps.JobOutput.outputs.aa }}
@@ -20,7 +20,7 @@ jobs:
           aa=$(ls | tail -1)
           echo "aa=${aa}" >> $GITHUB_OUTPUT
   use-artifacts:
-    needs: create-artifacts
+    needs: create_artifacts
     runs-on: ubuntu-latest
     steps:
       - name: test
@@ -30,4 +30,4 @@ jobs:
         with:
           name: files
       - name: list file names
-        run: echo ${{ needs.create-artifacts.outputs.first_var }}
+        run: echo ${{ needs.create_artifacts.outputs.first_var }}
