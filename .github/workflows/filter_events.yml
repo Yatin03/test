@@ -12,6 +12,7 @@ jobs:
           name: files
           path: aa_**.txt
   use-artifacts:
+    needs: create-artifacts
     runs-on: ubuntu-latest
     steps:
       - name: test
