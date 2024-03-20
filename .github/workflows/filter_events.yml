@@ -5,7 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: test
-        run: echo "test" > aa_{1..4}.txt
+        run: |
+          echo "test1" > aa_1.txt
+          echo "test2" > aa_2.txt
       - name: store-artifacts
         uses: actions/upload-artifact@v4
         with:
