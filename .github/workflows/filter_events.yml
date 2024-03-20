@@ -17,8 +17,8 @@ jobs:
           path: '**/aa_**.txt'
       - name: JobOutput
         run: |
-        aa=$(ls -ltr)
-        echo "aa=${aa}" >> $GITHUB_OUTPUT
+          aa=$(ls -ltr)
+          echo "aa=${aa}" >> $GITHUB_OUTPUT
   use-artifacts:
     needs: create-artifacts
     runs-on: ubuntu-latest
