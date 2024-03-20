@@ -3,6 +3,8 @@ on: [ push ]
 jobs:
   create-artifacts:
     runs-on: ubuntu-latest
+    outputs:
+      first_var: ${{ steps.JobOutput.outputs.aa }}
     steps:
       - name: test
         run: |
@@ -13,6 +15,10 @@ jobs:
         with:
           name: files
           path: '**/aa_**.txt'
+      - name: JobOutput
+        run: |
+        aa=$(ls -ltr)
+        echo "aa=${aa}" >> $GITHUB_OUTPUT
   use-artifacts:
     needs: create-artifacts
     runs-on: ubuntu-latest
@@ -24,4 +30,4 @@ jobs:
         with:
           name: files
       - name: list file names
-        run: ls -R
+        run: echo ${{ needs.create-artifacts.outputs.first_var }}
