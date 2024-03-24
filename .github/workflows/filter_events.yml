@@ -1,5 +1,5 @@
 name: Filter Events
-on: [ push ]
+on: [ workflow_dispatch ]
 jobs:
   create_artifacts:
     runs-on: ubuntu-latest

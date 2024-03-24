@@ -1,0 +1,23 @@
+name: Conditions steps
+on: workflow_dispatch
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print greeting
+        run: |
+          echo "First job"
+          exit 1
+      - name: print good bye
+        run: |
+          echo "Byee"
+          echo "Multi Line Shell Commands"
+  second-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print greeting
+        run: echo "Second job"
+      - name: print good bye
+        run: |
+          echo "Byee"
+          echo "Multi Line Shell Commands"
