@@ -1,0 +1,24 @@
+name: Reusable Workflow
+
+on:
+  workflow_call:
+    inputs:
+      first-param:
+        required: true
+        type: string
+    outputs:
+      result: ${{ jobs.reusable-job.outputs.result }}
+jobs:
+  reusable-job:
+    outputs:
+      result: ${{ steps.test-output.outputs.result }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: print greeting
+        run: echo "greeting"
+      - name: print bye
+        id: test-output
+        run: |
+          echo "Byee"
+          echo "Multi Line Shell Commands"
+          echo "result=Fail" >> "$GITHUB_OUTPUT"

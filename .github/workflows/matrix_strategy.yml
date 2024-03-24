@@ -1,7 +1,11 @@
-name: Conditions steps
+name: Matrix Strategy
 on: push
 jobs:
+
   first-job:
+    strategy:
+      matrix:
+        operating-system: [ 'ubuntu-latest', 'window-latest' ]
     runs-on: ubuntu-latest
     outputs:
       result: ${{ steps.job_outcome.outputs.outcome }}
@@ -28,5 +32,3 @@ jobs:
         run: |
           echo "Byee"
           echo "Multi Line Shell ${{ needs.first-job.outputs.result }}"
-  call-reusable-workflow:
-    uses: ./.github/workflow/reuseable-workflows.yml
