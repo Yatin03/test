@@ -15,7 +15,7 @@ jobs:
   second-job:
     needs: ['first-job']
     runs-on: ubuntu-latest
-    if: always() &&  == 'failure'
+    if: always()
     steps:
       - name: print greeting
         run: echo "Second job"
