@@ -12,6 +12,7 @@ jobs:
           exit 1
       - name: print good bye
         id: job_outcome
+        if: always()
         run: |
           echo "Byee"
           echo "Multi Line Shell Commands"
