@@ -30,3 +30,11 @@ jobs:
           echo "Multi Line Shell ${{ needs.first-job.outputs.result }}"
   call-reusable-workflow:
     uses: ./.github/workflows/reuseable-workflows.yml
+    with:
+      first-param: "teest"
+  print_workflow_result:
+    needs: call-reusable-workflow
+    runs-on: ubuntu-latest
+    steps:
+      - name: print result
+        run: echo "${{ needs.call-reusable-workflow.outputs.result }}"
