@@ -1,5 +1,5 @@
 name: Conditions steps
-on: workflow_dispatch
+on: push
 jobs:
   first-job:
     runs-on: ubuntu-latest
@@ -15,6 +15,7 @@ jobs:
   second-job:
     needs: ['first-job']
     runs-on: ubuntu-latest
+    if: jobs.first-job.outcome == 'failure'
     steps:
       - name: print greeting
         run: echo "Second job"
