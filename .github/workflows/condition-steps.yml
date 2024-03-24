@@ -3,15 +3,19 @@ on: push
 jobs:
   first-job:
     runs-on: ubuntu-latest
+    outputs:
+      result: ${{ steps.job_outcome.outputs.outcome }}
     steps:
       - name: print greeting
         run: |
           echo "First job"
           exit 1
       - name: print good bye
+        id: job_outcome
         run: |
           echo "Byee"
           echo "Multi Line Shell Commands"
+          echo "outcome='failure'" >> $GITHUB_OUTPUT
   second-job:
     needs: ['first-job']
     runs-on: ubuntu-latest
@@ -22,4 +26,4 @@ jobs:
       - name: print good bye
         run: |
           echo "Byee"
-          echo "Multi Line Shell ${{ needs.first-job.outcome }}"
+          echo "Multi Line Shell ${{ needs.first-job.outputs.result }}"
