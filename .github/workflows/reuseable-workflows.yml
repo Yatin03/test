@@ -8,7 +8,7 @@ on:
         type: string
     outputs:
       result:
-      value: ${{ jobs.reusable-job.outputs.result }}
+        value: ${{ jobs.reusable-job.outputs.result }}
 jobs:
   reusable-job:
     outputs:
